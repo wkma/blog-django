@@ -50,9 +50,9 @@ class Post(models.Model):
     content = models.TextField(verbose_name="正文", help_text="正文必须为MarkDown格式")
     status = models.PositiveIntegerField(default=STATUS_NORMAL,
                                          choices=STATUS_ITEMS, verbose_name="状态")
-    category = models.ForeignKey(Category, verbose_name="分类",on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name="分类", on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, verbose_name="标签")
-    owner = models.ForeignKey(User, verbose_name="作者",on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, verbose_name="作者", on_delete=models.CASCADE)
     creat_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
     class Meta:
