@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
     'theblog',
     'comment',
     'config',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'theblog.middleware.user_id.UserIDMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,10 +58,29 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
+    # {
+    #     'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    #     'DIRS': [os.path.join(BASE_DIR, 'templates')]
+    #     ,
+    #     'APP_DIRS': True,
+    #     'OPTIONS': {
+    #         'context_processors': [
+    #             'django.template.context_processors.debug',
+    #             'django.template.context_processors.request',
+    #             'django.contrib.auth.context_processors.auth',
+    #             'django.contrib.messages.context_processors.messages',
+    #         ],
+    #     },
+    # },
     {
+    #     # THEME = 'bootstrap'
+    #     # STATIC_ROOT = '/tmp/static'
+    #     # STATIC_URL = '/static/'
+    #     # STATICFILES_DIR=[
+    #     #     os.path.join(BASE_DIR,'theme',THEME,"static")
+    #     # ]
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR,'static','themes','templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +91,7 @@ TEMPLATES = [
             ],
         },
     },
+
 ]
 
 WSGI_APPLICATION = 'blog.wsgi.application'
@@ -103,8 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'Asia/Shanghai' \
-            ''
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -116,4 +137,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'  #类似于访问静态文件的令牌
+"""如果想访问静态文件，就必须以static开头"""
+"""/static/bootstrap-4.1.3-dist/css/bootstrap.css
+static令牌从上往下依次查找
+bootstrap-4.1.3-dist/css/bootstrap.css
+都没有就会报错
+"""
+#配置静态文件
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static'),
+]
