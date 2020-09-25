@@ -1,5 +1,5 @@
 ＃博客-基于django
-环境python3.7.7，django3.0.6，mysql。
+环境python3.7.7，django3.0.7，mysql。
 
 使用django+mysql+bootstrap等技术创建的博客，目前可以登录后台写博客，普通前端可以看到。还有未完善的功能和未优化的地方。
 
