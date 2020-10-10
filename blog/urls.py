@@ -37,7 +37,7 @@ urlpatterns = [
     path('post/<int:post_id>.html', PostDetailView.as_view(),name='post-detail'),
     path('links/', LinkListView.as_view(),name='links'),
     path('search/',SearchView.as_view(),name='search'),
-    path('author/',AuthorView.as_view(),name="author"),
+    path('author/<int:owner_id>/',AuthorView.as_view(),name="author"),
     path('comment/',CommentView.as_view(),name='comment'),
     #url(r'^comment/$',CommentView.as_view(),name='comment'),
     # path('category/<int:category_id>/', post_list,name="category-list"),
@@ -47,7 +47,7 @@ urlpatterns = [
     #path('super_admin/', custom_site.urls,name="super-admin"),
     path('admin/', admin.site.urls),
 
-    # url(r'^$', views.inde),
+    #url(r'li/^$', views.inde),
     #
     # url(r'admin/', admin.site.urls),
 ]

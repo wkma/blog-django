@@ -7,7 +7,7 @@
      shrink-to-fit=no">
     {% load static %}
     <link rel="stylesheet" href="{% static 'bootstrap-4.1.3-dist/css/bootstrap.css' %}">
-    <acript src="{% static 'bootstrap-4.1.3-dist/js/bootstrap.js' %}"></acript>  {# 3静态文件动态解析 #}
+    <script src="{% static 'bootstrap-4.1.3-dist/js/bootstrap.js' %}"></script>  {# 3静态文件动态解析 #}
 {#     <link rel="stylesheet" href="/static/bootstrap-4.1.3-dist/css/bootstrap.css">  {#2与setting配置为静态文件#}
 {#     <script src="../static/bootstrap-4.1.3-dist/js/bootstrap.js"></script>#}
     {#<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.3/css/bootstrap.css">#} {#1使用网站的#}
@@ -16,6 +16,8 @@
             margin-bottom:5px;  #配置每个post卡片下面的间隔
         }
     </style>
+{% block extra_head %}
+{% endblock %}
 </head>
 <body  style="background-color: #82f5e0">
 <div class="container head">

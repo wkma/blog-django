@@ -5,8 +5,8 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blog.settings.develop")# project_name 项目名称
 django.setup()
 from theblog.models import Post,Category
-posts = Post.objects.all().select_related('category')
+posts = Post.objects.filter()
 for post in posts:
-    print(post.category)
-list=Category.objects.filter(name="宇轩")
-print(list)
+    print(post.title)
+# list=Category.objects.filter(name="博文")
+# print(list)

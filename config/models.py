@@ -18,8 +18,12 @@ class Link(models.Model):
     owner = models.ForeignKey(User, verbose_name="作者",on_delete=models.CASCADE)
     created_time = models.DateField(auto_now_add=True, verbose_name="创建时间")
 
+
     class Meta:
         verbose_name = verbose_name_plural ="友链"
+
+    def __str__(self):
+        return self.title
 
 class SideBar(models.Model):
     STATUS_SHOW = 1
@@ -52,6 +56,9 @@ class SideBar(models.Model):
     class Meta:
         verbose_name = verbose_name_plural = "侧边栏"
 
+    def __str__(self):
+        return self.title
+
     @classmethod
     def get_all(cls):
         return cls.objects.filter(status=cls.STATUS_SHOW)
@@ -64,7 +71,7 @@ class SideBar(models.Model):
 
         result =''
         if self.display_type == self.DISPLAY_HTML:
-            result = self.comment
+            result = self.content
         elif self.display_type ==self.DISPLAY_LATEST:
             context = {
                 'posts':Post.latest_posts()

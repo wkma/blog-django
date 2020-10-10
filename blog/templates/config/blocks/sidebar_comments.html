@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>评论</title>
-</head>
-<body>
-<ul>
-    {% for comment in comments %}
-    <li><a href={{ comment.target }}">{{ comment.target.title }}</a>|
-    {{ comment.nickname }} :{% autoescape off %}{{ comment.context }}{% endautoescape %}</li>
+ <ul>
+    {% for com in comments %}
+    <li><a href="/post/{{ com.target }}.html">{{ com.target.title }}</a> |
+    {{ com.nickname }} : {% autoescape off %}{{ com.context }}{% endautoescape %}</li>
     {% endfor %}
-</ul>
-</body>
-</html>
+ </ul>
